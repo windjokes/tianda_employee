@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'D:\softs_study\projects\employee\employee.ui'
+# Form implementation generated from reading ui file 'F:\projects\3\softs_study\projects\employee\employee.ui'
 #
 # Created by: PyQt5 UI code generator 5.9
 #
@@ -70,6 +70,12 @@ class Ui_MainWindow(object):
         self.tableWidget_thisweek.setHorizontalHeaderItem(6, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget_thisweek.setHorizontalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_thisweek.setItem(0, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_thisweek.setItem(1, 1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_thisweek.setItem(4, 7, item)
         self.tableWidget_thisweek.horizontalHeader().setCascadingSectionResizes(False)
         self.tableWidget_thisweek.horizontalHeader().setHighlightSections(True)
         self.tableWidget_thisweek.horizontalHeader().setSortIndicatorShown(False)
@@ -170,7 +176,7 @@ class Ui_MainWindow(object):
         self.menuBar.addAction(self.menu_3.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -206,6 +212,15 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "结算"))
         item = self.tableWidget_thisweek.horizontalHeaderItem(7)
         item.setText(_translate("MainWindow", "发放"))
+        __sortingEnabled = self.tableWidget_thisweek.isSortingEnabled()
+        self.tableWidget_thisweek.setSortingEnabled(False)
+        item = self.tableWidget_thisweek.item(0, 0)
+        item.setText(_translate("MainWindow", "测试位置1"))
+        item = self.tableWidget_thisweek.item(1, 1)
+        item.setText(_translate("MainWindow", "测试位置2"))
+        item = self.tableWidget_thisweek.item(4, 7)
+        item.setText(_translate("MainWindow", "测试位置3"))
+        self.tableWidget_thisweek.setSortingEnabled(__sortingEnabled)
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "本周"))
         self.tableWidget_lastweek.setSortingEnabled(True)
         item = self.tableWidget_lastweek.verticalHeaderItem(0)
@@ -257,6 +272,8 @@ if __name__ == "__main__":
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
+
+
     MainWindow.show()
     sys.exit(app.exec_())
 

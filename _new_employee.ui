@@ -26,8 +26,8 @@
     <rect>
      <x>50</x>
      <y>50</y>
-     <width>441</width>
-     <height>241</height>
+     <width>450</width>
+     <height>261</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
@@ -80,14 +80,14 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="0">
+    <item row="6" column="0">
      <widget class="QLabel" name="label_5">
       <property name="text">
        <string>基本周薪</string>
       </property>
      </widget>
     </item>
-    <item row="5" column="0">
+    <item row="7" column="0">
      <widget class="QLabel" name="label_6">
       <property name="text">
        <string>4周基本奖金</string>
@@ -99,6 +99,9 @@
     </item>
     <item row="1" column="1">
      <widget class="QLineEdit" name="lineEdit_2">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>800</string>
       </property>
@@ -111,7 +114,7 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="1">
+    <item row="7" column="1">
      <widget class="QLineEdit" name="lineEdit_5">
       <property name="inputMethodHints">
        <set>Qt::ImhPreferNumbers</set>
@@ -121,7 +124,7 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="1">
+    <item row="6" column="1">
      <widget class="QLineEdit" name="lineEdit_4">
       <property name="inputMethodHints">
        <set>Qt::ImhPreferNumbers</set>
@@ -149,6 +152,21 @@
         <month>5</month>
         <day>20</day>
        </date>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLabel" name="label_7">
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <property name="text">
+       <string>以正式工作算起，入职当天算工作一天</string>
       </property>
      </widget>
     </item>

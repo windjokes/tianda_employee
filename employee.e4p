@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project employee -->
-<!-- Saved: 2017-10-21, 02:01:02 -->
+<!-- Saved: 2017-10-23, 21:38:11 -->
 <!-- Copyright (C) 2017 windjokes, 609859347@qq.com -->
 <Project version="5.1">
   <Language></Language>
@@ -19,6 +19,7 @@
     <Source>employee.py</Source>
   </Sources>
   <Forms>
+    <Form>_new_employee.ui</Form>
     <Form>employee.ui</Form>
   </Forms>
   <Translations/>

@@ -15,14 +15,15 @@ db = pymysql.connect(
 
 
 
-from PyQt5.QtCore import pyqtSlot, QDateTime
-from PyQt5.QtWidgets import QMainWindow,  QMessageBox
+from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtWidgets import QMainWindow,  QMessageBox, QTableWidgetItem
 from PyQt5 import QtWidgets
 
 import pymysql
 import time
 import sys
 #import datetime
+
 
 from Ui_employee import Ui_MainWindow
 from _new_employee import Dialog
@@ -41,49 +42,60 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         """
         Constructor
-        
+
         @param parent reference to the parent widget
         @type QWidget
         """
         super(MainWindow, self).__init__(parent)
+
         self.setupUi(self)
 
-        #老子现在不来和你死磕！！！等老子做好了，再来和你磕！
-        # 初始化时候尝试获取服务器时间，写入weekcount里(ps:以后可以放在登陆界面的按钮后面触发，这里只能先这样了，先出WARNING，再出界面)
-        # try:
+        # 初始化先获取weekly的表单填入当天
+        # 对于表单名字做判断，录入当期表单
         #
-        #     db = pymysql.connect(
-        #         host='120.77.44.91',
-        #         user='root',
-        #         passwd='Chenfeng123',
-        #         db='tianda_i',
-        #         charset='utf8'
-        #     )
+        # 这里先测试连接数据对接，往后再设计
+
+        db = pymysql.connect(
+            host='120.77.44.91',
+            port=3306,
+            user='root',
+            passwd='Chenfeng123',
+            db='tianda_i',
+            charset='utf8'
+        )
+        cursor = db.cursor()
+
+        sql = "select *from weekly;"
+
+        cursor.execute(sql)
+
+        data = cursor.fetchall()
+        print(data)
+        db.close()
+        # ((800801, 'gross', 350, 0, '', 350), (800802, '老王', 350, 0, '', 350))
+
+        print(data[1][4])
+
+
+        for i in range(0,5):
+            for j in range(0,6):
+                print(i,j)
+                cnt = data[i][j]
+                if cnt != str:
+                    cnt = str(cnt)
+                newItem = QTableWidgetItem(cnt)
+                self.tableWidget_thisweek.setItem(i, j,newItem )
+
+
         #
-        #     cursor = db.cursor()
-        #     cursor.execute("select date_format(now(),'%Y%m%d%H%i%s')")
-        #
-        #     _date = cursor.fetchall()[0][0][0:8]  # 这边获取时间成功20171021
-        #
-        #     print(_date)
-        #     print(_date[0:4], _date[4:6], _date[6:8] )
-        #
-        #     _date= '%s-%s-%s'%(_date[0:4], _date[4:6], _date[6:8])
-        #     print(_date)
-        #     #mysql里算两个日期相减，得到天数：
-        #     cursor.execute("select datediff(_date, '%s-01-01')"%_date[0:4])
-        #     __days=cursor.fetchall()
-        #     print(__days)
-        #     db.close()
-            
-            
-        #     _weekly_count=int(_days)/7
-        #     print(_weekly_count)
-        #     self.label_weekcount.setText('今天是%s\n本年度第%d周'%(_date, _weekly_count))
-        #
-        #
-        #
-        # except:
+        # m = range(0, 5)  # 总共5行要填
+        # n = range(0, 6)  # 总共6列要填
+        # for i in m:
+        #     for l in n:
+        #         print(i, l)
+        #         print(data[i][l])
+        #         newItem = QTableWidgetItem(data[i][l])  # 这个还真的挺麻烦的
+        #         self.tableWidget_thisweek.setItem(i, l, newItem)  # 行和列
 
         try:
             #抓取本地时间
@@ -93,12 +105,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             #print(_weekly_count)
                 #写入本地时间
             self.label_weekcount.setText('今天是%s\n本年度第%d周'%(_date,int(_weekly_count)))
-            
+
+
 
         except:
             QMessageBox.warning(self,'抓取本地时间失败','请联系管理员风哥')
             time.sleep(5)
             sys.exit(app.exec_())
+
+
+
+
+
+
+
 
 
 
@@ -216,23 +236,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         QMessageBox.information(self,'帮助','没啥好帮的')
 
+    #查询时间，查询模块晚点来搞
     @pyqtSlot()
     def on_pushButton_timeEnsure_clicked(self):
         """
         Slot documentation goes here.
         """
-        _time_ensure = str(self.dateEdit.dateTime()).replace(' ', '')[23:-1]
+        _time_ensure = str(self.dateEdit.dateTime()).replace(' ', '')[23:-5]
         print(_time_ensure)
-        _time_ensure = '%s,0'%_time_ensure
-        print(_time_ensure)
-        full_time = _time_ensure.split(',')
-        print (full_time)
-        
-        ensure_time = "%s-%s-%s 00:00:00"%(full_time[0], 
-        full_time[1], full_time[2])
-        print(ensure_time)
 
-    
+
     #提交表单按钮，只有所有人发放工资后才能提交！
     @pyqtSlot()
     def on_pushButton_submint_clicked(self):
