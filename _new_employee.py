@@ -83,6 +83,8 @@ class Dialog(QDialog, Ui_Dialog):
         """
         Slot documentation goes here.
         """
+
+
         #QT时间格式转换成arrow可以识别的时间格式。我日啊。QT的时间居然没有月份和日期可以没有0的
         _time_ensure = str(self.dateEdit.dateTime()).replace(' ', '')[23:-5]
         t = _time_ensure.split(',')
