@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+
+ʱ����㷽��
+import datetime
+datetime.datetime.now().isocalendar()
+���ؽ������Ԫ�飨��ţ��ڼ��ܣ��ڼ��죩
+
+
+Ҳ����������һ��������
+datetime.date(2014, 6, 8).isocalendar()
+��������2014-06-08��һ��������

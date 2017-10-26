@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Tasks SYSTEM "Tasks-6.0.dtd">
+<!-- eric6 tasks file for project employee -->
+<!-- Saved: 2017-10-22, 23:36:10 -->
+<Tasks version="6.0">
+  <ProjectScanFilter></ProjectScanFilter>
+  <Task priority="1" completed="False" type="1" uid="{715384f3-4828-4ed4-af25-ad358c39cf88}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2017-10-22, 23:36:07</Created>
+    <Resource>
+      <Filename>employee.py</Filename>
+      <Linenumber>126</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{7570f5a8-63f1-4d7a-a232-a4a07c72878d}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2017-10-22, 23:36:07</Created>
+    <Resource>
+      <Filename>employee.py</Filename>
+      <Linenumber>134</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{b65f7c5b-6a0b-40f7-92d0-f7a404582b9f}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2017-10-22, 23:36:07</Created>
+    <Resource>
+      <Filename>employee.py</Filename>
+      <Linenumber>193</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{87757902-0948-44bb-9863-0b70187a4203}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2017-10-22, 23:36:07</Created>
+    <Resource>
+      <Filename>employee.py</Filename>
+      <Linenumber>201</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{c9d2b8ca-92fc-494a-95da-d45f10565223}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2017-10-22, 23:36:07</Created>
+    <Resource>
+      <Filename>employee.py</Filename>
+      <Linenumber>242</Linenumber>
+    </Resource>
+  </Task>
+</Tasks>
