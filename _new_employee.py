@@ -41,7 +41,7 @@ class Dialog(QDialog, Ui_Dialog):
         else:
             event.ignore()
 
-    #‘取消’ 按钮
+    #‘取消’按钮
     @pyqtSlot()
     def on_pushButton_clicked(self):
         """
