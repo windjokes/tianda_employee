@@ -52,40 +52,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
 
         # 初始化先获取weekly的表单填入当天
-        # 对于表单名字做判断，录入当期表单
-        #
-        # 这里先测试连接数据对接，往后再设计
+        # 对于表单日期做判断，录入当期表单
 
-        # db = pymysql.connect(
-        #     host='120.77.44.91',
-        #     port=3306,
-        #     user='root',
-        #     passwd='Chenfeng123',
-        #     db='tianda_i',
-        #     charset='utf8'
-        # )
-        # cursor = db.cursor()
-        #
-        # sql = "select *from weekly;"
-        #
-        # cursor.execute(sql)
-        #
-        # data = cursor.fetchall()
-        # print(data)
-        # db.close()
-        # ((800801, 'gross', 350, 0, '', 350), (800802, '老王', 350, 0, '', 350))
-
-        #获取weekly的值填入表单
-
-
-        # try:
-        #
-        #
-        #
-        #
-        #
-        # except:
-        #     pass
 
         data_sql=Weekly.select().where(Weekly.ThisFridayDate ==last_Friday())
         data = []
@@ -107,36 +75,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.tableWidget_thisweek.setItem(i, j,newItem )
 
 
-
-
-
-
-
-
-
-        # print(data[1][4])
-        #
-        #
-        # for i in range(0,5):
-        #     for j in range(0,6):
-        #         print(i,j)
-        #         cnt = data[i][j]
-        #         if cnt != str:
-        #             cnt = str(cnt)
-        #         newItem = QTableWidgetItem(cnt)
-        #         self.tableWidget_thisweek.setItem(i, j,newItem )
-
-
-        #
-        # m = range(0, 5)  # 总共5行要填
-        # n = range(0, 6)  # 总共6列要填
-        # for i in m:
-        #     for l in n:
-        #         print(i, l)
-        #         print(data[i][l])
-        #         newItem = QTableWidgetItem(data[i][l])  # 这个还真的挺麻烦的
-        #         self.tableWidget_thisweek.setItem(i, l, newItem)  # 行和列
-
         try:
             #抓取本地时间
             _date=time.strftime("%Y-%m-%d", time.localtime())
@@ -146,26 +84,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 #写入本地时间
             self.label_weekcount.setText('今天是%s\n本年度第%d周'%(_date,int(_weekly_count)))
 
-
-
         except:
             QMessageBox.warning(self,'抓取本地时间失败','请联系管理员风哥')
             time.sleep(5)
             sys.exit(app.exec_())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     
@@ -217,32 +139,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         app.exec_()
         #到这里，就调用了新员工入职窗口，‘提交’的信息直接在
         # dialog里完成，信息直接被提交到mysql table empl
-        # oyee里，同时当期的table‘工资表’增加一行，提交成
+        # oyee里，同时当期的table‘weekly’增加一行，提交成
         # 功则提示成功，失败就说联系风哥。
-        
-    #
-       
-    
-    #     cursor=db.cursor
-    #
-    #     #table employee格式提示:
-    #     #varchar/varchar/varchar
-    #     #datetime/datetime
-    #     #int/int
-    #     sql = "insert into employee(" \
-    #           "Name, Count, Id, " \
-    #           "InTime, OutTime," \
-    #           "BasicWeeklySalary, Basic4WeeksSalary)" \
-    #           "values(%s, %s, %s," \
-    #           "%s, %s," \
-    #           "%d, %d)"
-    #
-    #     cursor.execute(sql%(Name, Count, Id,
-    #                         InTime, OutTime,
-    #                         BasicWeeklySalary, Basic4WeeksSalary))
-              
-        
-
 
     #离职
     @pyqtSlot()

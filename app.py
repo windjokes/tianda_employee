@@ -80,3 +80,4 @@ def max_id():
     db.close()
 
     return id
+
