@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'F:\projects\3\softs_study\projects\employee\employee.ui'
+# Form implementation generated from reading ui file 'D:\softs_study\projects\tianda_employee\employee.ui'
 #
 # Created by: PyQt5 UI code generator 5.9
 #
@@ -201,15 +201,15 @@ class Ui_MainWindow(object):
         item = self.tableWidget_thisweek.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "姓名"))
         item = self.tableWidget_thisweek.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "应发"))
+        item.setText(_translate("MainWindow", "动态权益"))
         item = self.tableWidget_thisweek.horizontalHeaderItem(3)
-        item.setText(_translate("MainWindow", "扣款"))
+        item.setText(_translate("MainWindow", "手续费"))
         item = self.tableWidget_thisweek.horizontalHeaderItem(4)
-        item.setText(_translate("MainWindow", "备注"))
+        item.setText(_translate("MainWindow", "扣款"))
         item = self.tableWidget_thisweek.horizontalHeaderItem(5)
-        item.setText(_translate("MainWindow", "结算薪水"))
+        item.setText(_translate("MainWindow", "备注"))
         item = self.tableWidget_thisweek.horizontalHeaderItem(6)
-        item.setText(_translate("MainWindow", "结算"))
+        item.setText(_translate("MainWindow", "结算薪水"))
         item = self.tableWidget_thisweek.horizontalHeaderItem(7)
         item.setText(_translate("MainWindow", "发放"))
         __sortingEnabled = self.tableWidget_thisweek.isSortingEnabled()
@@ -251,7 +251,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "发放"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "上一周"))
         self.label.setText(_translate("MainWindow", "当前选择为本年度第x-2周"))
-        self.pushButton_submint.setText(_translate("MainWindow", "提交"))
+        self.pushButton_submint.setText(_translate("MainWindow", "提交/修改"))
         self.label_2.setText(_translate("MainWindow", "您尚未提交本周薪资：RED；您已提交本周薪资"))
         self.menu.setTitle(_translate("MainWindow", "程序"))
         self.menu_2.setTitle(_translate("MainWindow", "员工"))
@@ -272,8 +272,6 @@ if __name__ == "__main__":
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
-
-
     MainWindow.show()
     sys.exit(app.exec_())
 

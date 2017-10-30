@@ -19,18 +19,19 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QMainWindow,  QMessageBox, QTableWidgetItem
 from PyQt5 import QtWidgets
 
-import pymysql
 import time
 import sys
-#import datetime
+from app import *
 
 
 from Ui_employee import Ui_MainWindow
+
+
+
+
+
+
 from _new_employee import Dialog
-
-
-
-
 
 
 
@@ -55,36 +56,75 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #
         # 这里先测试连接数据对接，往后再设计
 
-        db = pymysql.connect(
-            host='120.77.44.91',
-            port=3306,
-            user='root',
-            passwd='Chenfeng123',
-            db='tianda_i',
-            charset='utf8'
-        )
-        cursor = db.cursor()
-
-        sql = "select *from weekly;"
-
-        cursor.execute(sql)
-
-        data = cursor.fetchall()
-        print(data)
-        db.close()
+        # db = pymysql.connect(
+        #     host='120.77.44.91',
+        #     port=3306,
+        #     user='root',
+        #     passwd='Chenfeng123',
+        #     db='tianda_i',
+        #     charset='utf8'
+        # )
+        # cursor = db.cursor()
+        #
+        # sql = "select *from weekly;"
+        #
+        # cursor.execute(sql)
+        #
+        # data = cursor.fetchall()
+        # print(data)
+        # db.close()
         # ((800801, 'gross', 350, 0, '', 350), (800802, '老王', 350, 0, '', 350))
 
-        print(data[1][4])
+        #获取weekly的值填入表单
 
 
-        for i in range(0,5):
-            for j in range(0,6):
-                print(i,j)
-                cnt = data[i][j]
-                if cnt != str:
-                    cnt = str(cnt)
-                newItem = QTableWidgetItem(cnt)
+        # try:
+        #
+        #
+        #
+        #
+        #
+        # except:
+        #     pass
+
+        data_sql=Weekly.select().where(Weekly.ThisFridayDate ==last_Friday())
+        data = []
+        row_count = 0
+        for i in data_sql:
+            l=()
+            l=(i.id,i.Name,i.Rights,i.Fee,i.Cut,i.Remark,i.RealPay)
+            data.append(l)
+            row_count +=1
+            #print(l,type(l[0]))  #(800831, '150216', 100000.0, 0.0, 0.0, '扣款细则：', 0.0) <class 'int'>
+        self.tableWidget_thisweek.setRowCount(row_count)
+        print(data[1],type(data[1][2]))
+        for i in range(0,row_count):
+            for j in range(0,7):
+                data_box = data[i][j]
+                if data_box != str:
+                    data_box = str(data_box)
+                newItem = QTableWidgetItem(data_box)
                 self.tableWidget_thisweek.setItem(i, j,newItem )
+
+
+
+
+
+
+
+
+
+        # print(data[1][4])
+        #
+        #
+        # for i in range(0,5):
+        #     for j in range(0,6):
+        #         print(i,j)
+        #         cnt = data[i][j]
+        #         if cnt != str:
+        #             cnt = str(cnt)
+        #         newItem = QTableWidgetItem(cnt)
+        #         self.tableWidget_thisweek.setItem(i, j,newItem )
 
 
         #

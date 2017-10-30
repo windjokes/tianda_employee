@@ -177,7 +177,12 @@
       </column>
       <column>
        <property name="text">
-        <string>应发</string>
+        <string>动态权益</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>手续费</string>
        </property>
       </column>
       <column>
@@ -193,11 +198,6 @@
       <column>
        <property name="text">
         <string>结算薪水</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>结算</string>
        </property>
       </column>
       <column>
@@ -359,7 +359,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>提交</string>
+     <string>提交/修改</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
