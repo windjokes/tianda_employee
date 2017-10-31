@@ -13,7 +13,7 @@ from Ui__new_employee import Ui_Dialog
 
 
 import sys
-from app import *
+from Mysql_app import *
 
 
 
@@ -89,7 +89,7 @@ class Dialog(QDialog, Ui_Dialog):
 
 
             Weekly.create (
-                ThisFridayDate = last_Friday(),                  #本周五的date
+                Check_Friday = last_Friday(),                  #本周五的date
                 id = self.lineEdit_2.text(),                           #
                 Name = self.lineEdit.text(),
                 #WeeklySalary = IntegerField(default=350),      #周薪

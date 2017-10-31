@@ -21,7 +21,7 @@ from PyQt5 import QtWidgets
 
 import time
 import sys
-from app import *
+from Mysql_app import *
 
 
 from Ui_employee import Ui_MainWindow
@@ -32,6 +32,24 @@ from Ui_employee import Ui_MainWindow
 
 
 from _new_employee import Dialog
+
+
+#
+# class RealPay_Calculate(object):
+#
+#     def __init__(self):
+#         self.
+#
+#     #根据状态来调用呗
+#     def States0(self):
+#         pass
+#
+#
+#     def States123(self):
+#         pass
+#
+#     def States4(self):
+#         pass
 
 
 
@@ -55,19 +73,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # 对于表单日期做判断，录入当期表单
 
 
-        data_sql=Weekly.select().where(Weekly.ThisFridayDate ==last_Friday())
+        data_sql=Weekly.select().where(Weekly.Check_Friday ==last_Friday())
         data = []
         row_count = 0
         for i in data_sql:
             l=()
-            l=(i.id,i.Name,i.Rights,i.Fee,i.Cut,i.Remark,i.RealPay)
+            l=(i.Cycle,i.id,i.Name,i.Rights,i.Fee,i.Cut,
+               i.Remark,i.ReadyRights,i.ReadyFee,i.RealPay)
             data.append(l)
             row_count +=1
             #print(l,type(l[0]))  #(800831, '150216', 100000.0, 0.0, 0.0, '扣款细则：', 0.0) <class 'int'>
         self.tableWidget_thisweek.setRowCount(row_count)
-        print(data[1],type(data[1][2]))
         for i in range(0,row_count):
-            for j in range(0,7):
+            for j in range(0,10):
                 data_box = data[i][j]
                 if data_box != str:
                     data_box = str(data_box)
@@ -90,7 +108,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             sys.exit(app.exec_())
 
 
-    
+
+
+
+
     #设定关闭确认框
     def closeEvent(self, event):
         reply = QMessageBox.question(self,  '退出选项',  '你确定要退出吗？',  QMessageBox.Yes | QMessageBox.No,  QMessageBox.No)
@@ -99,7 +120,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             event.accept()
         else:
             event.ignore()
-    
+
+
+
     @pyqtSlot()
     def on_export_2_clicked(self):
         """
@@ -192,9 +215,33 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         # TODO: not implemented yet
         raise NotImplementedError
-    
-        
-        
+
+    #item changed
+    @pyqtSlot(QTableWidgetItem)
+    def on_tableWidget_thisweek_itemActivated(self, item):
+        """
+        Slot documentation goes here.
+
+        @param item DESCRIPTION
+        @type QTableWidgetItem
+        """
+
+
+
+
+
+    @pyqtSlot(QTableWidgetItem)
+    def on_tableWidget_thisweek_itemChanged(self, item):
+        """
+        Slot documentation goes here.
+
+        @param item DESCRIPTION
+        @type QTableWidgetItem
+        """
+        newItem= QTableWidgetItem('x')
+        self.tableWidget_thisweek.setVerticalItem(9,newItem )
+
+
         
 
 
@@ -209,3 +256,4 @@ if __name__ == "__main__":
 
     sys.exit(app.exec_())
     
+

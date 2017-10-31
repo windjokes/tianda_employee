@@ -167,6 +167,11 @@
       </row>
       <column>
        <property name="text">
+        <string>周数</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
         <string>账号</string>
        </property>
       </column>
@@ -197,6 +202,16 @@
       </column>
       <column>
        <property name="text">
+        <string>留存4周奖金</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>留存手续费</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
         <string>结算薪水</string>
        </property>
       </column>
@@ -205,22 +220,24 @@
         <string>发放</string>
        </property>
       </column>
-      <item row="0" column="0">
+      <item row="0" column="1">
        <property name="text">
         <string>测试位置1</string>
        </property>
       </item>
-      <item row="1" column="1">
+      <item row="1" column="2">
        <property name="text">
         <string>测试位置2</string>
        </property>
       </item>
-      <item row="4" column="7">
+      <item row="4" column="10">
        <property name="text">
         <string>测试位置3</string>
        </property>
       </item>
      </widget>
+     <zorder>tableWidget_thisweek</zorder>
+     <zorder>export_2</zorder>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
