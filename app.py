@@ -47,6 +47,7 @@ class Weekly(BaseModle):
     Cut = FloatField(default=0,null=True)
     Remark = CharField(default='扣款细则：',null=True)
     RealPay = FloatField(default=0,null=True)
+    States = IntegerField(2,default = 0)
 
 
 
