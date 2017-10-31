@@ -73,7 +73,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # 对于表单日期做判断，录入当期表单
 
 
+
         data_sql=Weekly.select().where(Weekly.Check_Friday ==last_Friday())
+
+        data_sql=Weekly.select().where(Weekly.Check_Friday ==last_Friday())
+
         data = []
         row_count = 0
         for i in data_sql:
@@ -82,7 +86,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                i.Remark,i.ReadyRights,i.ReadyFee,i.RealPay)
             data.append(l)
             row_count +=1
-            #print(l,type(l[0]))  #(800831, '150216', 100000.0, 0.0, 0.0, '扣款细则：', 0.0) <class 'int'>
+            #print(l,type(l[0]))  #(800831, '150216', 100000.0, 0.0, 0.0, '扣款细则：', 0.0) <class 'tuple'>
         self.tableWidget_thisweek.setRowCount(row_count)
         for i in range(0,row_count):
             for j in range(0,10):
@@ -144,7 +148,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
-        reply = QMessageBox.question(self,  '退出选项',  '你确定要退出吗？', QMessageBox.Yes | QMessageBox.No,  QMessageBox.No)
+        reply = QMessageBox.question(self,  '退出选项',  '你确定要退出吗？',
+                                     QMessageBox.Yes | QMessageBox.No,  QMessageBox.No)
         
         if reply == QMessageBox.Yes:
             sys.exit(app.exec_())

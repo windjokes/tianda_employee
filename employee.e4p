@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project employee -->
-<!-- Saved: 2017-10-23, 21:38:11 -->
+<!-- Saved: 2017-11-01, 00:31:32 -->
 <!-- Copyright (C) 2017 windjokes, 609859347@qq.com -->
 <Project version="5.1">
   <Language></Language>
@@ -14,8 +14,12 @@
   <Email>609859347@qq.com</Email>
   <Eol index="0"/>
   <Sources>
+    <Source>Mysql_app.py</Source>
+    <Source>Ui__new_employee.py</Source>
     <Source>Ui_employee.py</Source>
     <Source>__init__.py</Source>
+    <Source>_new_employee.py</Source>
+    <Source>app.py</Source>
     <Source>employee.py</Source>
   </Sources>
   <Forms>
