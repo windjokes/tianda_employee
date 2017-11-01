@@ -103,6 +103,13 @@ class Dialog(QDialog, Ui_Dialog):
             )
 
 
+
+            
+
+
+
+
+
             QMessageBox.information(self,'创建成功','创建新员工成功！')
         except:
             QMessageBox.information(self, '失败提醒',

@@ -255,7 +255,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         global changed_item_content
 
-        changed_item_content = item.text()
+        try:
+
+            changed_item_content = item.text()
+
+        except:
+
+            pass
 
 
 
@@ -275,19 +281,27 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         if column == 3 or column ==4 or column ==5:
 
-            #不管是哪个，反正就是取它的值，然后再算一遍
-            ColumnNum_345 = int(float(changed_item_content))
-            #取周期
-            CycleNum = int(self.tableWidget_thisweek.item(row,0).text())
-            #动态权益
-            RightsNum = int(float(self.tableWidget_thisweek.item(row,3).text()))
-            #扣款
-            CutNum = int(float(self.tableWidget_thisweek.item(row,5).text()))
-            #手续费
-            FeeNum = int(float(self.tableWidget_thisweek.item(row,4).text()))
-            print(ColumnNum_345,CycleNum,RightsNum,CutNum)
-            newItem = QTableWidgetItem(str(RightsNum+FeeNum))
-            self.tableWidget_thisweek.setItem(row,9,newItem)
+            #这边用try来解决加载时候，item里面是nonetype的问题
+            try:
+
+                #不管是哪个row，反正就是取它column的值，然后再算一遍
+                ColumnNum_345 = int(float(changed_item_content))
+                #取周期
+                CycleNum = int(self.tableWidget_thisweek.item(row,0).text())
+                #动态权益
+                RightsNum = int(float(self.tableWidget_thisweek.item(row,3).text()))
+                #扣款
+                CutNum = int(float(self.tableWidget_thisweek.item(row,5).text()))
+                #手续费
+                FeeNum = int(float(self.tableWidget_thisweek.item(row,4).text()))
+                print(ColumnNum_345,CycleNum,RightsNum,CutNum)
+                newItem = QTableWidgetItem(str(RightsNum+FeeNum))
+                self.tableWidget_thisweek.setItem(row,9,newItem)
+
+            except:
+
+                pass
+
 
 
 
