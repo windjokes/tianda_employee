@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'D:\softs_study\projects\employee\_new_employee.ui'
+# Form implementation generated from reading ui file 'D:\softs_study\projects\tianda_employee\_new_employee.ui'
 #
 # Created by: PyQt5 UI code generator 5.9
 #

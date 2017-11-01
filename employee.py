@@ -16,7 +16,7 @@ db = pymysql.connect(
 
 
 from PyQt5.QtCore import pyqtSlot
-from PyQt5.QtWidgets import QMainWindow,  QMessageBox, QTableWidgetItem
+from PyQt5.QtWidgets import QMainWindow,  QMessageBox, QTableWidgetItem,QTableWidget
 from PyQt5 import QtWidgets
 
 import time
@@ -32,6 +32,13 @@ from Ui_employee import Ui_MainWindow
 
 
 from _new_employee import Dialog
+
+
+changed_row = 1
+changed_column = 1
+
+
+
 
 
 #
@@ -73,9 +80,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # 对于表单日期做判断，录入当期表单
 
 
-
-        data_sql=Weekly.select().where(Weekly.Check_Friday ==last_Friday())
-
         data_sql=Weekly.select().where(Weekly.Check_Friday ==last_Friday())
 
         data = []
@@ -83,13 +87,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for i in data_sql:
             l=()
             l=(i.Cycle,i.id,i.Name,i.Rights,i.Fee,i.Cut,
-               i.Remark,i.ReadyRights,i.ReadyFee,i.RealPay)
+               i.Remark,i.ReadyRights,i.ReadyFee)
             data.append(l)
             row_count +=1
             #print(l,type(l[0]))  #(800831, '150216', 100000.0, 0.0, 0.0, '扣款细则：', 0.0) <class 'tuple'>
         self.tableWidget_thisweek.setRowCount(row_count)
+
         for i in range(0,row_count):
-            for j in range(0,10):
+            for j in range(0,9):
                 data_box = data[i][j]
                 if data_box != str:
                     data_box = str(data_box)
@@ -110,6 +115,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             QMessageBox.warning(self,'抓取本地时间失败','请联系管理员风哥')
             time.sleep(5)
             sys.exit(app.exec_())
+
+
 
 
 
@@ -202,7 +209,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         QMessageBox.information(self,'帮助','没啥好帮的')
 
+
     #查询时间，查询模块晚点来搞
+
     @pyqtSlot()
     def on_pushButton_timeEnsure_clicked(self):
         """
@@ -213,6 +222,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     #提交表单按钮，只有所有人发放工资后才能提交！
+
     @pyqtSlot()
     def on_pushButton_submint_clicked(self):
         """
@@ -221,16 +231,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # TODO: not implemented yet
         raise NotImplementedError
 
+
     #item changed
-    @pyqtSlot(QTableWidgetItem)
-    def on_tableWidget_thisweek_itemActivated(self, item):
-        """
-        Slot documentation goes here.
-
-        @param item DESCRIPTION
-        @type QTableWidgetItem
-        """
-
 
 
 
@@ -238,13 +240,59 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     @pyqtSlot(QTableWidgetItem)
     def on_tableWidget_thisweek_itemChanged(self, item):
         """
-        Slot documentation goes here.
+            Slot documentation goes here.
 
-        @param item DESCRIPTION
-        @type QTableWidgetItem
+            @param item DESCRIPTION
+            @type QTableWidgetItem
         """
-        newItem= QTableWidgetItem('x')
-        self.tableWidget_thisweek.setVerticalItem(9,newItem )
+            # QMessageBox.information(self,'good','good')
+            # 载入界面就开始出来一堆Box
+            # 我草！！这个才是正宗啊！
+            # result = item.text()
+            # QtWidgets.QTableWidget.cell
+            #
+            # print(result)
+
+        global changed_item_content
+
+        changed_item_content = item.text()
+
+
+
+    @pyqtSlot(int, int)
+    def on_tableWidget_thisweek_cellChanged(self, row, column):
+        """
+                        Slot documentation goes here.
+
+                        @param row DESCRIPTION
+                        @type int
+                        @param column DESCRIPTION
+                        @type int
+        """
+
+        newItem = QTableWidgetItem('23')
+        #下面是工资的算法：
+
+        if column == 3 or column ==4 or column ==5:
+
+            #不管是哪个，反正就是取它的值，然后再算一遍
+            ColumnNum_345 = int(float(changed_item_content))
+            #取周期
+            CycleNum = int(self.tableWidget_thisweek.item(row,0).text())
+            #动态权益
+            RightsNum = int(float(self.tableWidget_thisweek.item(row,3).text()))
+            #扣款
+            CutNum = int(float(self.tableWidget_thisweek.item(row,5).text()))
+            #手续费
+            FeeNum = int(float(self.tableWidget_thisweek.item(row,4).text()))
+            print(ColumnNum_345,CycleNum,RightsNum,CutNum)
+            newItem = QTableWidgetItem(str(RightsNum+FeeNum))
+            self.tableWidget_thisweek.setItem(row,9,newItem)
+
+
+
+
+
 
 
         
@@ -257,6 +305,7 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     ui = MainWindow()
     ui.show()
+
 
 
     sys.exit(app.exec_())
