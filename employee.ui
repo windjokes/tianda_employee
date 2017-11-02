@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1107</width>
-    <height>781</height>
+    <width>1478</width>
+    <height>816</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(239, 239, 239);</string>
+   <string notr="true">background-color: rgb(255, 254, 248);</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="export_2">
@@ -72,11 +72,14 @@
    <widget class="QLabel" name="label_weekcount">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>350</x>
       <y>10</y>
-      <width>211</width>
-      <height>41</height>
+      <width>221</width>
+      <height>71</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 174, 44);</string>
     </property>
     <property name="text">
      <string>今天是2017年10月20日 本年度第x周</string>
@@ -87,7 +90,7 @@
      <rect>
       <x>30</x>
       <y>90</y>
-      <width>1061</width>
+      <width>1411</width>
       <height>601</height>
      </rect>
     </property>
@@ -106,7 +109,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1061</width>
+        <width>1411</width>
         <height>581</height>
        </rect>
       </property>
@@ -220,6 +223,11 @@
         <string>发放</string>
        </property>
       </column>
+      <column>
+       <property name="text">
+        <string>入职时间</string>
+       </property>
+      </column>
       <item row="0" column="1">
        <property name="text">
         <string>测试位置1</string>
@@ -236,8 +244,6 @@
        </property>
       </item>
      </widget>
-     <zorder>tableWidget_thisweek</zorder>
-     <zorder>export_2</zorder>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -392,13 +398,49 @@
      <string>您尚未提交本周薪资：RED；您已提交本周薪资</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="newbee">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>10</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>新员工</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="beeleave">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>10</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>员工离职</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>710</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1107</width>
+     <width>1478</width>
      <height>23</height>
     </rect>
    </property>
@@ -429,6 +471,7 @@
    <addaction name="menu_2"/>
    <addaction name="menu_3"/>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionleave">
    <property name="text">
     <string>import</string>

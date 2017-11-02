@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'D:\softs_study\projects\tianda_employee\_new_employee.ui'
+# Form implementation generated from reading ui file 'J:\projects\tianda_employee\_new_employee.ui'
 #
 # Created by: PyQt5 UI code generator 5.9
 #
@@ -11,13 +11,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
+        Dialog.setEnabled(True)
         Dialog.resize(535, 461)
         font = QtGui.QFont()
         font.setPointSize(14)
         Dialog.setFont(font)
         Dialog.setSizeGripEnabled(True)
         self.formLayoutWidget = QtWidgets.QWidget(Dialog)
-        self.formLayoutWidget.setGeometry(QtCore.QRect(50, 50, 450, 261))
+        self.formLayoutWidget.setGeometry(QtCore.QRect(50, 50, 450, 281))
         self.formLayoutWidget.setObjectName("formLayoutWidget")
         self.formLayout = QtWidgets.QFormLayout(self.formLayoutWidget)
         self.formLayout.setFieldGrowthPolicy(QtWidgets.QFormLayout.ExpandingFieldsGrow)
@@ -50,7 +51,8 @@ class Ui_Dialog(object):
         self.lineEdit.setObjectName("lineEdit")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit)
         self.lineEdit_2 = QtWidgets.QLineEdit(self.formLayoutWidget)
-        self.lineEdit_2.setEnabled(False)
+        self.lineEdit_2.setEnabled(True)
+        self.lineEdit_2.setDragEnabled(True)
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_2)
         self.lineEdit_3 = QtWidgets.QLineEdit(self.formLayoutWidget)

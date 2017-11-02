@@ -8,12 +8,14 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5 import QtWidgets
 
+from Mysql_app import *
+
 
 from Ui__new_employee import Ui_Dialog
 
 
 import sys
-from Mysql_app import *
+
 
 
 
@@ -24,7 +26,7 @@ class Dialog(QDialog, Ui_Dialog):
     def __init__(self, parent=None):
         """
         Constructor
-        
+
         @param parent reference to the parent widget
         @type QWidget
         """
@@ -32,10 +34,13 @@ class Dialog(QDialog, Ui_Dialog):
         self.setupUi(self)
 
         #自动获取max_id的值，作ID
-        self.lineEdit_2.setText(str(max_id()))
+        try:    #用try来解决第一个用户的问题
 
+            self.lineEdit_2.setText(str(max_id()))
 
+        except:
 
+            pass
 
 
     # 老规矩，先来编辑一个退出跳出框来确认
@@ -61,7 +66,7 @@ class Dialog(QDialog, Ui_Dialog):
             sys.exit(app.exec_())
         else:
             pass
-            
+
 
 
     #‘提交’按钮
@@ -77,6 +82,25 @@ class Dialog(QDialog, Ui_Dialog):
             #     QMessageBox.information(self,'错误提醒','请输入姓名！')
             #
             # else:
+
+            #入职员工cycle
+            #从dateEdit里提取时间要计算
+            time2str = ChangeQttime2str(self.dateEdit.date())
+            DeltaDays_Monday=int(str(arrow.get().date()-next_Monday(time2str)).split(' ')[0])
+
+            if DeltaDays_Monday < 0:
+
+                delta_Weeks = 0
+
+            else:
+
+                delta_Weeks = DeltaDays_Monday/7+1
+
+
+
+
+
+
             Employee.create(
                     id = self.lineEdit_2.text(),
                     Name = self.lineEdit.text(),
@@ -88,13 +112,14 @@ class Dialog(QDialog, Ui_Dialog):
                 )
 
 
+            #给weekly新建人员，
             Weekly.create (
                 Check_Friday = last_Friday(),                  #本周五的date
                 id = self.lineEdit_2.text(),                           #
                 Name = self.lineEdit.text(),
                 #WeeklySalary = IntegerField(default=350),      #周薪
                 #FourWeeklyBonus = IntegerField(default=2000),  #四周新
-                #Cycle = IntegerField(default=0),
+                Cycle = delta_Weeks,
                 #Rights = FloatField(default=100000),
                 #Fee = FloatField(default=0),
                 #Cut = FloatField(default=0),
@@ -104,14 +129,12 @@ class Dialog(QDialog, Ui_Dialog):
 
 
 
-            
-
-
-
 
 
             QMessageBox.information(self,'创建成功','创建新员工成功！')
+
         except:
+
             QMessageBox.information(self, '失败提醒',
                                     '创建新员工失败,请检查网络，然后联系风哥！')
             sys.exit(app.exec_())

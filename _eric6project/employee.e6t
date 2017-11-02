@@ -1,52 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-6.0.dtd">
 <!-- eric6 tasks file for project employee -->
-<!-- Saved: 2017-11-02, 00:59:50 -->
+<!-- Saved: 2017-11-02, 23:59:29 -->
 <Tasks version="6.0">
   <ProjectScanFilter></ProjectScanFilter>
-  <Task priority="1" completed="False" type="1" uid="{a4a576bb-b85f-4504-a2d5-7413dedab0f5}">
+  <Task priority="1" completed="False" type="1" uid="{b36e76fd-1492-4a12-be35-a0b584fa13ee}">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2017-11-02, 00:59:47</Created>
+    <Created>2017-11-02, 23:59:26</Created>
     <Resource>
       <Filename>employee.py</Filename>
-      <Linenumber>142</Linenumber>
+      <Linenumber>329</Linenumber>
     </Resource>
   </Task>
-  <Task priority="1" completed="False" type="1" uid="{7f4573e5-7610-49da-a9fc-cdc77df26742}">
+  <Task priority="1" completed="False" type="1" uid="{afc5da03-2ae6-483c-8ebc-6ebc67a2c655}">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2017-11-02, 00:59:47</Created>
+    <Created>2017-11-02, 23:59:26</Created>
     <Resource>
       <Filename>employee.py</Filename>
-      <Linenumber>150</Linenumber>
+      <Linenumber>337</Linenumber>
     </Resource>
   </Task>
-  <Task priority="1" completed="False" type="1" uid="{71836d8a-c8c1-4443-8af5-0b6ebb5cde88}">
+  <Task priority="1" completed="False" type="1" uid="{db688158-83a2-4515-bc9e-64f1ca078ecc}">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2017-11-02, 00:59:47</Created>
+    <Created>2017-11-02, 23:59:26</Created>
     <Resource>
       <Filename>employee.py</Filename>
-      <Linenumber>186</Linenumber>
+      <Linenumber>398</Linenumber>
     </Resource>
   </Task>
-  <Task priority="1" completed="False" type="1" uid="{bcdcbd59-ad40-4b25-8665-0c5770496c27}">
+  <Task priority="1" completed="False" type="1" uid="{d414e07b-3cbc-41af-a9e8-c8df1335dcec}">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2017-11-02, 00:59:47</Created>
+    <Created>2017-11-02, 23:59:26</Created>
     <Resource>
       <Filename>employee.py</Filename>
-      <Linenumber>194</Linenumber>
-    </Resource>
-  </Task>
-  <Task priority="1" completed="False" type="1" uid="{89d7fa77-fb44-4f9a-8454-1c310b84c388}">
-    <Summary>TODO: not implemented yet</Summary>
-    <Description></Description>
-    <Created>2017-11-02, 00:59:47</Created>
-    <Resource>
-      <Filename>employee.py</Filename>
-      <Linenumber>231</Linenumber>
+      <Linenumber>434</Linenumber>
     </Resource>
   </Task>
 </Tasks>

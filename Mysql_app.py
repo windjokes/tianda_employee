@@ -4,7 +4,7 @@
 
 
 from peewee import *
-import datetime,calendar,pymysql
+import datetime,calendar,pymysql,arrow
 
 db = MySQLDatabase(
         host='120.77.44.91',
@@ -44,12 +44,12 @@ class Weekly(BaseModle):
     # FourWeeklyBonus = IntegerField(default=2000,null=True)  #四周新
     Cycle = IntegerField(default=0,null=True)
     Rights = FloatField(default=100000,null=True)           #动态权益
-    ReadyRights = FloatField(default=2000,null=True)        #预留权益
+    CheckRights = FloatField(default=2000,null=True)        #预留权益
     Fee = FloatField(default=0,null=True)                   #当期手续费
-    ReadyFee = FloatField(default=1800,null=True)           #预留手续费
+    CheckFee = FloatField(default=1800,null=True)           #预留手续费
     Cut = FloatField(default=0,null=True)                   #扣款
     Remark = CharField(default='出勤扣款：0；违规交易：0',null=True)
-    RealPay = FloatField(default=0,null=True)               #当期工资
+    CheckPay = FloatField(default=0,null=True)               #当期工资
     States = IntegerField(default=0)                        #状态
 
 
@@ -68,6 +68,33 @@ def last_Friday():
     return _lastFriday
 
 
+#计算本周五函数，用于第一次计算，同时用于下个表格的周五计算
+def this_Friday(_time):
+
+    _thisFriday = arrow.get(_time).date()
+    one_day = datetime.timedelta(days=1)
+
+    while _thisFriday.weekday() != calendar.FRIDAY:
+        _thisFriday += one_day
+    return _thisFriday
+
+#天数差的int形式
+# c = this_Friday()-arrow.get().date()
+# print(str(c)) #1 day, 0:00:00
+# print(str(c).split(' ')[0])
+
+#_time的下个周一
+def next_Monday(_time):
+
+    _nextMonday = arrow.get(_time).date()
+    one_day = datetime.timedelta(days=1)
+
+    while _nextMonday.weekday() != calendar.MONDAY:
+        _nextMonday += one_day
+    return _nextMonday
+
+
+
 #共有多少行
 def ThisFriday_Weekly_Row_Count():
 
@@ -77,6 +104,7 @@ def ThisFriday_Weekly_Row_Count():
         Row_Number+=1
 
     return Row_Number
+
 
 
 
@@ -104,12 +132,22 @@ def max_id():
 
 
 
-#计算共有多少ROW
 
 
 
+#QT时间强行转化为字符
+def ChangeQttime2str(Q_date):
+    Q_time = str(Q_date)[19:-1].replace(' ','').split(',')
+    _Month = Q_time[1]
+    _Day = Q_time[2]
 
+    if int(_Month) < 10:
+        _Month = '0%s'%_Month
 
+    if int(_Day) < 10:
+        _Day = '0%s'%_Day
 
-#下面是RealPay的计算函数
+    Q_time = "%s,%s,%s"%(Q_time[0],_Month,_Day)
+
+    return Q_time
 
